@@ -2,7 +2,7 @@ const { validationResult } = require('express-validator')
 const Gps = require('../models/gps')
 
 exports.createGpsPoint = async (req, res) => {
-    console.log("->", req.body)
+    // console.log("->", req.params)
     const errs = validationResult(req)
     if (!errs.isEmpty()) {
       res.status(400).json({ errores: errs.array() })
@@ -10,7 +10,7 @@ exports.createGpsPoint = async (req, res) => {
     }
   
     try {
-      const gpsModel = new Gps(req.body)
+      const gpsModel = new Gps( req.params)
       await gpsModel.save((err, room) => {
         if (err) {
           res.status(400).send({ msg: 'Error al insertar en la base de datos' })
