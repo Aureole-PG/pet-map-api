@@ -11,7 +11,8 @@ exports.PetInfo = async (req, res) =>{
                     gps_id: e.gps_id,
                     name: e.nombre,
                     owner: user.nombre,
-                    email: user.email
+                    email: user.email,
+                    owner_id: user._id
                 }
             });
         })
